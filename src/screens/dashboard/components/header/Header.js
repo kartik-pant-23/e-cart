@@ -4,7 +4,26 @@ import _size from "lodash/size";
 
 import styles from "./Header.module.css";
 
-function Header({ cartItems }) {
+function Header({ cartItems, onSearchQueryChange }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // function debounce(func, timeout = 300) {
+  //   let timer;
+  //   return (...args) => {
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() => {
+  //       func.apply(this, args);
+  //     }, timeout);
+  //   };
+  // }
+
+  const onInputChange = (e) => {
+    const newValue = e.target.value.trim();
+    setSearchQuery(newValue);
+    onSearchQueryChange(newValue);
+    // debounce(() => onSearchQueryChange(newValue));
+  };
+
   return (
     <div className={styles.topNavbar}>
       <h1 className={styles.brandName}>Teketo</h1>
@@ -13,6 +32,8 @@ function Header({ cartItems }) {
         className={styles.searchBar}
         type='text'
         placeholder='Search your food...'
+        value={searchQuery}
+        onChange={onInputChange}
       />
 
       <div className={styles.cartContainer}>

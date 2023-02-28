@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import _map from "lodash/map";
+import _get from "lodash/get";
+import _filter from "lodash/filter";
+import _includes from "lodash/includes";
+import _lowerCase from "lodash/lowerCase";
 
 import Header from "./components/header";
 import ItemCard from "./components/itemCard";
@@ -9,9 +13,23 @@ import ItemCard from "./components/itemCard";
 import styles from "./Dashboard.module.css";
 
 function Dashboard({ products, cartItems, onChangeItemQuantity }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchQueryChange = (newValue) => setSearchQuery(newValue);
+
+  const isProductMatchingSearchQuery = (product) =>
+    _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
+    _includes(
+      _lowerCase(_get(product, "description")),
+      _lowerCase(searchQuery)
+    );
+
   return (
     <div>
-      <Header cartItems={cartItems} />
+      <Header
+        cartItems={cartItems}
+        onSearchQueryChange={handleSearchQueryChange}
+      />
 
       <div className={styles.content}>
         <h1 className={styles.pageTitle}>
@@ -21,7 +39,7 @@ function Dashboard({ products, cartItems, onChangeItemQuantity }) {
           </span>
         </h1>
 
-        {_map(products, (item) => (
+        {_map(_filter(products, isProductMatchingSearchQuery), (item) => (
           <ItemCard
             key={item.id}
             item={item}

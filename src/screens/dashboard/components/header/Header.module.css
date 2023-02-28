@@ -32,6 +32,9 @@
 
 .cartSize {
   padding: 0.25rem 0.5rem;
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
   background-color: #fff;
   color: #990000;
   margin-left: 0.5rem;
