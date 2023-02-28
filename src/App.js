@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import _get from "lodash/get";
+import _find from "lodash/find";
 import _map from "lodash/map";
 import _reject from "lodash/reject";
 
@@ -20,21 +21,19 @@ function App() {
   }, []);
 
   const handleChangeItemQuantity = (itemId, quantityChange) => {
-    let newItem;
+    const item = _find(products, ["id", itemId]);
+    let newItem = {
+      ...item,
+      quantity: Math.max(0, item.quantity + quantityChange),
+    };
+
     setProducts((prevItems) =>
-      _map(prevItems, (item) => {
-        if (item.id !== itemId) return item;
-        newItem = {
-          ...item,
-          quantity: Math.max(0, item.quantity + quantityChange),
-        };
-        return newItem;
-      })
+      _map(prevItems, (item) => (item.id !== itemId ? item : newItem))
     );
 
     if (_get(newItem, "quantity") === 0) {
       setCartItems((prevItems) => _reject(prevItems, ["id", newItem.id]));
-    } else if (_get(newItem, "quantity") === 1) {
+    } else if (_get(newItem, "quantity") === 1 && quantityChange === 1) {
       setCartItems((prevItems) => [newItem, ...prevItems]);
     } else {
       setCartItems((prevItems) =>
