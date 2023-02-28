@@ -1,0 +1,29 @@
+.content {
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
+}
+
+.pageTitle {
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #990000;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  display: none;
+}
+
+.brandTag {
+  background-color: #990000;
+  color: white;
+  padding: 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    display: flex;
+    flex-direction: column;
+  }
+}

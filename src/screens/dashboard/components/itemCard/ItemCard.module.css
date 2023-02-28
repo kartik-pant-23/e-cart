@@ -1,0 +1,45 @@
+.itemContainer {
+  display: flex;
+  width: 750px;
+  max-width: 100vw;
+  padding: 0.5rem 1rem;
+  margin: auto;
+  /* background-color: rgba(153, 0, 0, 0.05); */
+}
+
+.itemImage {
+  width: 25%;
+  aspect-ratio: 1;
+  align-self: center;
+  background-color: rgba(255, 0, 0, 0.05);
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.itemDetailsContainer {
+  padding: 1rem;
+}
+
+.itemName,
+.itemDescription,
+.itemPrice {
+  margin: 0;
+}
+
+.itemDescription {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .itemContainer {
+    display: block;
+    padding-bottom: 1rem;
+  }
+  .itemImage {
+    width: 100%;
+    aspect-ratio: 3/2;
+  }
+  .itemDetailsContainer {
+    padding: 0;
+  }
+}

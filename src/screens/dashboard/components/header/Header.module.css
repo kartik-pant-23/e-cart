@@ -1,0 +1,53 @@
+.topNavbar {
+  background-color: #990000;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.brandName {
+  color: white;
+  margin: 0;
+  width: 10rem;
+  text-align: start;
+  margin-right: 1rem;
+}
+
+.searchBar {
+  padding: 0.5rem 0.75rem;
+  width: 50rem;
+  outline: none;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.cartContainer {
+  width: 10rem;
+  color: white;
+  text-align: end;
+  margin-left: 1rem;
+}
+
+.cartSize {
+  padding: 0.25rem 0.5rem;
+  background-color: #fff;
+  color: #990000;
+  margin-left: 0.5rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .brandName {
+    display: none;
+  }
+  .searchBar {
+    width: 100%;
+  }
+  .cartContainer {
+    text-align: center;
+    width: 10rem;
+  }
+}
