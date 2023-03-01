@@ -1,9 +1,14 @@
-.itemContainer {
-  display: flex;
+.container {
+  position: relative;
   width: 750px;
-  max-width: 100vw;
-  padding: 0.5rem 1rem;
+  max-width: 100%;
   margin: auto;
+}
+
+.itemContainer {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 0;
   /* background-color: rgba(153, 0, 0, 0.05); */
 }
 
@@ -13,7 +18,7 @@
   align-self: center;
   background-color: rgba(255, 0, 0, 0.05);
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 0.25rem;
 }
 
 .itemDetailsContainer {
@@ -28,6 +33,16 @@
 
 .itemDescription {
   color: rgba(0, 0, 0, 0.5);
+}
+
+.removeButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  background-color: rgb(205, 205, 205);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {

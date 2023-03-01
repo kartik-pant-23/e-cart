@@ -1,0 +1,74 @@
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content {
+  width: 900px;
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: white;
+  margin: auto;
+}
+.content > h1 {
+  margin: 0;
+}
+
+.itemsTable {
+  width: 750px;
+  max-width: 100%;
+  margin: 1rem auto;
+  border-collapse: collapse;
+}
+
+.itemsTable th,
+.itemsTable tfoot {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.01);
+  padding: 0.5rem;
+}
+
+.itemsTable td {
+  padding: 0.5rem 1rem;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.tableItemQuantity {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+td.tableItemQuantity > h2 {
+  margin: 0;
+}
+td.tableItemPrice {
+  text-align: end;
+}
+
+.itemsTable > tfoot td {
+  text-align: end;
+}
+tfoot h2,
+tfoot h4 {
+  margin: 0;
+}
+
+.payButtonContainer {
+  margin-top: 2rem;
+  text-align: end;
+}
+.payButtonContainer > button {
+  background-color: #090;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: large;
+  cursor: pointer;
+}
+.payButtonContainer > button:hover {
+  background-color: #0b0;
+}

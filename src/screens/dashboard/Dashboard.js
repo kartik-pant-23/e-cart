@@ -9,7 +9,7 @@ import _includes from "lodash/includes";
 import _lowerCase from "lodash/lowerCase";
 
 import Header from "./components/header";
-import ItemCard from "./components/itemCard";
+import ItemCard from "../../components/itemCard";
 import EmptyList from "./components/emptyList";
 
 import styles from "./Dashboard.module.css";
@@ -18,7 +18,9 @@ function Dashboard({ products, cartItems, onChangeItemQuantity }) {
   const [items, setItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearchQueryChange = (newValue) => setSearchQuery(newValue);
+  const handleSearchQueryChange = (newValue) => {
+    setSearchQuery(newValue);
+  };
 
   useEffect(() => {
     setItems(

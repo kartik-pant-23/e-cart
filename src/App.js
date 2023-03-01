@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import _get from "lodash/get";
 import _find from "lodash/find";
@@ -6,6 +7,7 @@ import _map from "lodash/map";
 import _reject from "lodash/reject";
 
 import Dashboard from "./screens/dashboard";
+import CheckoutCart from "./screens/cart";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -43,11 +45,31 @@ function App() {
   };
 
   return (
-    <Dashboard
-      products={products}
-      cartItems={cartItems}
-      onChangeItemQuantity={handleChangeItemQuantity}
-    />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/'>
+          <Route
+            index
+            element={
+              <Dashboard
+                products={products}
+                cartItems={cartItems}
+                onChangeItemQuantity={handleChangeItemQuantity}
+              />
+            }
+          />
+          <Route
+            path='cart'
+            element={
+              <CheckoutCart
+                cartItems={cartItems}
+                onChangeItemQuantity={handleChangeItemQuantity}
+              />
+            }
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

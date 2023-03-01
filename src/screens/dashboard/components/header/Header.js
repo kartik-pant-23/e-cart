@@ -1,27 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 
 import _size from "lodash/size";
 
 import styles from "./Header.module.css";
 
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
 function Header({ cartItems, onSearchQueryChange }) {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // function debounce(func, timeout = 300) {
-  //   let timer;
-  //   return (...args) => {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => {
-  //       func.apply(this, args);
-  //     }, timeout);
-  //   };
-  // }
+  const debounceCB = useMemo(
+    () => debounce(onSearchQueryChange, 300),
+    [onSearchQueryChange]
+  );
 
   const onInputChange = (e) => {
     const newValue = e.target.value.trim();
     setSearchQuery(newValue);
-    onSearchQueryChange(newValue);
-    // debounce(() => onSearchQueryChange(newValue));
+    debounceCB(newValue);
   };
 
   return (
@@ -37,8 +42,10 @@ function Header({ cartItems, onSearchQueryChange }) {
       />
 
       <div className={styles.cartContainer}>
-        <i className='fa-solid fa-cart-shopping fa-lg'></i> Cart
-        <span className={styles.cartSize}>{_size(cartItems)}</span>
+        <Link className={styles.cartButton} to='/cart'>
+          <i className='fa-solid fa-cart-shopping fa-lg'></i> Cart
+          <span className={styles.cartSize}>{_size(cartItems)}</span>
+        </Link>
       </div>
     </div>
   );

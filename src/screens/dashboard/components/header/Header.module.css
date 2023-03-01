@@ -17,6 +17,11 @@
 
 .searchBar {
   padding: 0.5rem 0.75rem;
+  padding-left: 2rem;
+  background: url("https://static.thenounproject.com/png/101791-200.png")
+    no-repeat 0.5rem 0.5rem;
+  background-size: 20px;
+  background-color: white;
   width: 50rem;
   outline: none;
   border-radius: 0.25rem;
@@ -25,9 +30,21 @@
 
 .cartContainer {
   width: 10rem;
-  color: white;
   text-align: end;
   margin-left: 1rem;
+}
+
+.cartButton {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  padding: 0.5rem;
+  display: inline-block;
+  width: 8rem;
+}
+.cartButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 0.25rem;
 }
 
 .cartSize {
