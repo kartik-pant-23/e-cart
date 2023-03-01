@@ -16,6 +16,15 @@
   display: none;
 }
 
+.filterContainer {
+  width: 750px;
+  max-width: 100%;
+  margin: auto;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.025);
+  border-radius: 0.25rem;
+}
+
 .brandTag {
   background-color: #990000;
   color: white;

@@ -17,27 +17,32 @@ import styles from "./Dashboard.module.css";
 function Dashboard({ products, cartItems, onChangeItemQuantity }) {
   const [items, setItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [vegOnlyFilter, setVegOnlyFilter] = useState(false);
 
   const handleSearchQueryChange = (newValue) => {
     setSearchQuery(newValue);
   };
 
-  useEffect(() => {
-    setItems(
-      _filter(
-        products,
-        (product) =>
-          _includes(
-            _lowerCase(_get(product, "name")),
-            _lowerCase(searchQuery)
-          ) ||
-          _includes(
-            _lowerCase(_get(product, "description")),
-            _lowerCase(searchQuery)
-          )
+  const handleVegOnlyFilterChange = () => {
+    setVegOnlyFilter((prev) => !prev);
+  };
+
+  const filterProducts = (product) => {
+    return (
+      _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
+      _includes(
+        _lowerCase(_get(product, "description")),
+        _lowerCase(searchQuery)
       )
     );
-  }, [products, searchQuery]);
+  };
+
+  useEffect(() => {
+    const itemsList = vegOnlyFilter
+      ? _filter(products, "vegetarian")
+      : products;
+    setItems(_filter(itemsList, filterProducts));
+  }, [products, searchQuery, vegOnlyFilter]);
 
   return (
     <div>
@@ -53,6 +58,18 @@ function Dashboard({ products, cartItems, onChangeItemQuantity }) {
             Your Favourite Food, Your Favourite Place
           </span>
         </h1>
+
+        <div className={styles.filterContainer}>
+          Filter:&nbsp;
+          <input
+            type='checkbox'
+            name='vegOnly'
+            id='vegOnly'
+            checked={vegOnlyFilter}
+            onChange={handleVegOnlyFilterChange}
+          />
+          Veg Only
+        </div>
 
         {_size(items) === 0 && <EmptyList />}
 

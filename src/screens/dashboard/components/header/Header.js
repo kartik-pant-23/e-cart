@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import _size from "lodash/size";
 
@@ -29,6 +29,11 @@ function Header({ cartItems, onSearchQueryChange }) {
     debounceCB(newValue);
   };
 
+  const navigate = useNavigate();
+  const openCheckoutPage = () => {
+    if (_size(cartItems) > 0) navigate("cart");
+  };
+
   return (
     <div className={styles.topNavbar}>
       <h1 className={styles.brandName}>Teketo</h1>
@@ -42,10 +47,10 @@ function Header({ cartItems, onSearchQueryChange }) {
       />
 
       <div className={styles.cartContainer}>
-        <Link className={styles.cartButton} to='/cart'>
+        <div className={styles.cartButton} onClick={openCheckoutPage}>
           <i className='fa-solid fa-cart-shopping fa-lg'></i> Cart
           <span className={styles.cartSize}>{_size(cartItems)}</span>
-        </Link>
+        </div>
       </div>
     </div>
   );
