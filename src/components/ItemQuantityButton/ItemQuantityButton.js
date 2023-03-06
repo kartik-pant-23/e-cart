@@ -3,12 +3,27 @@ import PropTypes from "prop-types";
 
 import styles from "./ItemQuantityButton.module.css";
 
-function ItemQuantityButton({ itemId, quantity, onChangeItemQuantity }) {
+import { useDispatch } from "react-redux";
+import {
+  increaseItemQuantity,
+  decreaseItemQuantity,
+} from "../../reducers/products";
+import { addItem, removeItem } from "../../reducers/cartItems";
+
+function ItemQuantityButton({ itemId, quantity }) {
+  const dispatch = useDispatch();
+
   const handleIncreaseItemQuantity = () => {
-    onChangeItemQuantity(itemId, 1);
+    if (quantity === 0) {
+      dispatch(addItem(itemId));
+    }
+    dispatch(increaseItemQuantity({ id: itemId }));
   };
   const handleDecreaseItemQuantity = () => {
-    onChangeItemQuantity(itemId, -1);
+    if (quantity === 1) {
+      dispatch(removeItem(itemId));
+    }
+    dispatch(decreaseItemQuantity({ id: itemId }));
   };
 
   return (

@@ -5,9 +5,16 @@ import styles from "./ItemCard.module.css";
 
 import ItemQuantityButton from "../ItemQuantityButton";
 
-function ItemCard({ item, onChangeItemQuantity, showRemoveButton = false }) {
+import { useDispatch } from "react-redux";
+import { removeItem as deleteItemFromCart } from "../../reducers/cartItems";
+import { decreaseItemQuantity } from "../../reducers/products";
+
+function ItemCard({ item, showRemoveButton = false }) {
+  const dispatch = useDispatch();
+
   const removeItem = () => {
-    onChangeItemQuantity(item.id, -item.quantity);
+    dispatch(deleteItemFromCart(item.id));
+    dispatch(decreaseItemQuantity({ id: item.id, quantity: item.quantity }));
   };
 
   return (
@@ -18,11 +25,7 @@ function ItemCard({ item, onChangeItemQuantity, showRemoveButton = false }) {
           <h3 className={styles.itemName}>{item.name}</h3>
           <h2 className={styles.itemPrice}>{`$${item.price}`}</h2>
           <p className={styles.itemDescription}>{item.description}</p>
-          <ItemQuantityButton
-            itemId={item.id}
-            quantity={item.quantity}
-            onChangeItemQuantity={onChangeItemQuantity}
-          />
+          <ItemQuantityButton itemId={item.id} quantity={item.quantity} />
         </div>
       </div>
 

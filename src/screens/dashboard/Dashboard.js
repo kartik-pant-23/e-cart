@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 
 import _size from "lodash/size";
 import _map from "lodash/map";
@@ -13,11 +12,14 @@ import ItemCard from "../../components/itemCard";
 import EmptyList from "./components/emptyList";
 
 import styles from "./Dashboard.module.css";
+import { useSelector } from "react-redux";
 
-function Dashboard({ products, cartItems, onChangeItemQuantity }) {
+function Dashboard() {
   const [items, setItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [vegOnlyFilter, setVegOnlyFilter] = useState(false);
+
+  const products = useSelector((state) => state.products);
 
   const handleSearchQueryChange = (newValue) => {
     setSearchQuery(newValue);
@@ -46,10 +48,7 @@ function Dashboard({ products, cartItems, onChangeItemQuantity }) {
 
   return (
     <div>
-      <Header
-        cartItems={cartItems}
-        onSearchQueryChange={handleSearchQueryChange}
-      />
+      <Header onSearchQueryChange={handleSearchQueryChange} />
 
       <div className={styles.content}>
         <h1 className={styles.pageTitle}>
@@ -74,22 +73,10 @@ function Dashboard({ products, cartItems, onChangeItemQuantity }) {
         {_size(items) === 0 && <EmptyList />}
 
         {_size(items) > 0 &&
-          _map(items, (item) => (
-            <ItemCard
-              key={item.id}
-              item={item}
-              onChangeItemQuantity={onChangeItemQuantity}
-            />
-          ))}
+          _map(items, (item) => <ItemCard key={item.id} item={item} />)}
       </div>
     </div>
   );
 }
-
-Dashboard.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object),
-  cartItems: PropTypes.arrayOf(PropTypes.object),
-  onChangeItemQuantity: PropTypes.func,
-};
 
 export default Dashboard;

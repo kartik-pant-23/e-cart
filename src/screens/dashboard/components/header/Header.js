@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import _size from "lodash/size";
 
 import styles from "./Header.module.css";
+import { useSelector } from "react-redux";
 
 function debounce(func, timeout = 300) {
   let timer;
@@ -15,7 +16,8 @@ function debounce(func, timeout = 300) {
   };
 }
 
-function Header({ cartItems, onSearchQueryChange }) {
+function Header({ onSearchQueryChange }) {
+  const cartItems = useSelector((state) => state.cartItems);
   const [searchQuery, setSearchQuery] = useState("");
 
   const debounceCB = useMemo(

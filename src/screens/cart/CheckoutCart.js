@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import _map from "lodash/map";
+import _find from "lodash/find";
 import _sumBy from "lodash/sumBy";
 
 import ItemCard from "../../components/itemCard";
 
 import styles from "./CheckoutCart.module.css";
+import { useSelector } from "react-redux";
 
-function CheckoutCart({ cartItems, onChangeItemQuantity }) {
-  const getTotalSum = () => {
-    return _sumBy(cartItems, (item) => item.quantity * item.price).toFixed(2);
-  };
+function CheckoutCart() {
+  const cartItemIds = useSelector((state) => state.cartItems);
+  const products = useSelector((state) => state.products);
+
+  let cartItems = useMemo(
+    () => _map(cartItemIds, (itemId) => _find(products, ["id", itemId])),
+    [cartItemIds, products]
+  );
+
+  let cartCost = useMemo(
+    () => _sumBy(cartItems, (item) => item.price * item.quantity).toFixed(2),
+    [cartItems]
+  );
 
   return (
     <div className={styles.main}>
@@ -18,12 +29,7 @@ function CheckoutCart({ cartItems, onChangeItemQuantity }) {
         <h1>Cart Items</h1>
         <div className={styles.cartItems}>
           {_map(cartItems, (item) => (
-            <ItemCard
-              key={item.id}
-              item={item}
-              onChangeItemQuantity={onChangeItemQuantity}
-              showRemoveButton={true}
-            />
+            <ItemCard key={item.id} item={item} showRemoveButton={true} />
           ))}
         </div>
 
@@ -57,14 +63,14 @@ function CheckoutCart({ cartItems, onChangeItemQuantity }) {
                 <h4>Total</h4>
               </td>
               <td className={styles.itemsTableTotalPrice}>
-                <h2>{`$${getTotalSum()}`}</h2>
+                <h2>{`$${cartCost}`}</h2>
               </td>
             </tr>
           </tfoot>
         </table>
 
         <div className={styles.payButtonContainer}>
-          <button>{`Make Payment - $${getTotalSum()}`}</button>
+          <button>{`Make Payment - $${cartCost}`}</button>
         </div>
       </div>
     </div>
