@@ -1,13 +1,13 @@
 import React, { useMemo } from "react";
-
+import { useSelector } from "react-redux";
 import _map from "lodash/map";
 import _find from "lodash/find";
 import _sumBy from "lodash/sumBy";
+import _round from "lodash/round";
 
 import ItemCard from "../../components/itemCard";
 
 import styles from "./CheckoutCart.module.css";
-import { useSelector } from "react-redux";
 
 function CheckoutCart() {
   const cartItemIds = useSelector((state) => state.cartItems);
@@ -19,7 +19,11 @@ function CheckoutCart() {
   );
 
   let cartCost = useMemo(
-    () => _sumBy(cartItems, (item) => item.price * item.quantity).toFixed(2),
+    () =>
+      _round(
+        _sumBy(cartItems, (item) => item.price * item.quantity),
+        2
+      ),
     [cartItems]
   );
 

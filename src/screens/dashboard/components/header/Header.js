@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import _size from "lodash/size";
 
 import styles from "./Header.module.css";
-import { useSelector } from "react-redux";
 
 function debounce(func, timeout = 300) {
   let timer;

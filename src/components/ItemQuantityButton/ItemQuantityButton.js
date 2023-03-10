@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import styles from "./ItemQuantityButton.module.css";
-
 import { useDispatch } from "react-redux";
+
 import {
   increaseItemQuantity,
   decreaseItemQuantity,
 } from "../../reducers/products";
 import { addItem, removeItem } from "../../reducers/cartItems";
+
+import styles from "./ItemQuantityButton.module.css";
 
 function ItemQuantityButton({ itemId, quantity }) {
   const dispatch = useDispatch();

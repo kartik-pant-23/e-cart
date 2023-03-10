@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
 import _size from "lodash/size";
 import _map from "lodash/map";
 import _get from "lodash/get";
@@ -12,7 +12,6 @@ import ItemCard from "../../components/itemCard";
 import EmptyList from "./components/emptyList";
 
 import styles from "./Dashboard.module.css";
-import { useSelector } from "react-redux";
 
 function Dashboard() {
   const [items, setItems] = useState([]);

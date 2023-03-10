@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import styles from "./ItemCard.module.css";
+import { useDispatch } from "react-redux";
 
 import ItemQuantityButton from "../ItemQuantityButton";
 
-import { useDispatch } from "react-redux";
 import { removeItem as deleteItemFromCart } from "../../reducers/cartItems";
 import { decreaseItemQuantity } from "../../reducers/products";
+import styles from "./ItemCard.module.css";
 
 function ItemCard({ item, showRemoveButton = false }) {
   const dispatch = useDispatch();
