@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import _size from "lodash/size";
+import _size from "lodash.size";
 
 import styles from "./Header.module.css";
 

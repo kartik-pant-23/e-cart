@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import _map from "lodash/map";
+import _map from "lodash.map";
 
 import Dashboard from "./screens/dashboard";
 import CheckoutCart from "./screens/cart";

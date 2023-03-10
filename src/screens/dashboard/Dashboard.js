@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import _size from "lodash/size";
-import _map from "lodash/map";
-import _get from "lodash/get";
-import _filter from "lodash/filter";
-import _includes from "lodash/includes";
-import _lowerCase from "lodash/lowerCase";
+import _size from "lodash.size";
+import _map from "lodash.map";
+import _get from "lodash.get";
+import _filter from "lodash.filter";
+import _includes from "lodash.includes";
+import _lowerCase from "lodash.lowercase";
 
 import Header from "./components/header";
 import ItemCard from "../../components/itemCard";

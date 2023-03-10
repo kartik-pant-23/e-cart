@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
-import _map from "lodash/map";
-import _find from "lodash/find";
-import _sumBy from "lodash/sumBy";
-import _round from "lodash/round";
+import _map from "lodash.map";
+import _find from "lodash.find";
+import _sumBy from "lodash.sumby";
+import _round from "lodash.round";
 
 import ItemCard from "../../components/itemCard";
 
