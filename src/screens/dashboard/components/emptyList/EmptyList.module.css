@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyListImage {
+  width: 700px;
+  max-width: calc(100vw - 2rem);
+  object-fit: cover;
+}

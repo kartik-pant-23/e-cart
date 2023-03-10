@@ -1,0 +1,53 @@
+.buttonContainer {
+  margin-top: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: fit-content;
+  user-select: none;
+}
+
+.addToCartButton {
+  padding: 0.5rem 0.75rem;
+  background-color: #005699;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.addToCartButton:hover {
+  background-color: #106eb6;
+}
+
+.buttonIncrease,
+.buttonDecrease,
+.buttonQuantity {
+  display: inline-block;
+  color: white;
+  font-size: 1.25rem;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.buttonQuantity {
+  font-size: 1rem;
+  color: #2d2d2d;
+  width: 3rem;
+  text-align: center;
+}
+
+.buttonIncrease {
+  background-color: #009900;
+  border-radius: 0 0.25rem 0.25rem 0;
+  cursor: pointer;
+}
+.buttonIncrease:hover {
+  background-color: #00bb00;
+}
+
+.buttonDecrease {
+  background-color: #990000;
+  border-radius: 0.25rem 0 0 0.25rem;
+  cursor: pointer;
+}
+.buttonDecrease:hover {
+  background-color: #bb0000;
+}

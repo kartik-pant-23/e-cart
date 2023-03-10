@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Hamburger",
+    "image": "https://cdn.britannica.com/31/122031-050-F8FCA663/Hamburger-cheeseburger.jpg",
+    "price": 9.99,
+    "description": "A juicy beef patty topped with lettuce, tomato, onion, pickles, and your choice of cheese.",
+    "vegetarian": false
+  },
+  {
+    "id": 2,
+    "name": "Margherita Pizza",
+    "image": "https://cdn.britannica.com/93/234293-050-08CDFA33/Chicago-style-pizza.jpg",
+    "price": 12.99,
+    "description": "A classic pizza with tomato sauce, fresh mozzarella cheese, and basil leaves.",
+    "vegetarian": true
+  },
+  {
+    "id": 3,
+    "name": "Chicken Caesar Salad",
+    "image": "https://spicecravings.com/wp-content/uploads/2022/05/Strawberry-Spinach-Salad-Featured.jpg",
+    "price": 8.99,
+    "description": "Crisp romaine lettuce, tender grilled chicken, Parmesan cheese, and croutons, all tossed with a creamy Caesar dressing.",
+    "vegetarian": false
+  },
+  {
+    "id": 4,
+    "name": "Vegetable Fried Rice",
+    "image": "https://cdn.britannica.com/35/225835-050-A5CC289A/Indian-one-pot-meal-for-party.jpg",
+    "price": 7.99,
+    "description": "A delicious mix of vegetables and rice stir-fried to perfection with soy sauce and other seasonings.",
+    "vegetarian": true
+  },
+  {
+    "id": 5,
+    "name": "Spaghetti Bolognese",
+    "image": "https://cdn.britannica.com/60/236460-050-AFA6D24F/Cooked-Italian-spaghetti-being-put-in-the-pan-with-hot-Bolognese-sauce.jpg",
+    "price": 10.99,
+    "description": "A classic Italian dish featuring spaghetti noodles topped with a hearty meat sauce.",
+    "vegetarian": false
+  },
+  {
+    "id": 6,
+    "name": "Veggie Burger",
+    "image": "https://assets.bonappetit.com/photos/57acae2d1b33404414975121/5:4/w_3029,h_2423,c_limit/ultimate-veggie-burger.jpg",
+    "price": 8.99,
+    "description": "A delicious plant-based patty topped with lettuce, tomato, onion, pickles, and your choice of cheese.",
+    "vegetarian": true
+  },
+  {
+    "id": 7,
+    "name": "Fish and Chips",
+    "image": "https://cdn.britannica.com/79/234779-050-4B07137B/fish-and-chips-mushy-peas.jpg",
+    "price": 11.99,
+    "description": "Freshly battered and fried fish served with crispy French fries.",
+    "vegetarian": false
+  },
+  {
+    "id": 8,
+    "name": "Caesar Salad",
+    "image": "https://cdn.britannica.com/14/234014-050-CB842159/Caesar-salad-side-view.jpg",
+    "price": 6.99,
+    "description": "Crisp romaine lettuce, Parmesan cheese, and croutons, all tossed with a creamy Caesar dressing.",
+    "vegetarian": true
+  },
+  {
+    "id": 9,
+    "name": "Tandoori Chicken",
+    "image": "https://cdn.britannica.com/08/183208-050-928F9A05/Tandoori-chicken.jpg?w=400&h=300&c=crop",
+    "price": 13.99,
+    "description": "A flavorful Indian dish featuring marinated chicken cooked in a clay oven.",
+    "vegetarian": false
+  },
+  {
+    "id": 10,
+    "name": "Mushroom Burger",
+    "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/5/8/0/FN_Melissa-DArabian-Burger_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371616351111.jpeg",
+    "price": 9.99,
+    "description": "Juicy mushroom patty served on a soft bun with lettuce, tomato, onion, and condiments.",
+    "vegetarian": true
+  },
+  {
+    "id": 11,
+    "name": "Beef Stroganoff",
+    "image": "https://cdn.britannica.com/26/233926-050-05E0C271/beef-stroganoff-with-egg-noodles-beef-mushrooms.jpg?w=400&h=300&c=crop",
+    "price": 12.99,
+    "description": "Tender strips of beef in a creamy mushroom sauce served over egg noodles.",
+    "vegetarian": false
+  },
+  {
+    "id": 12,
+    "name": "Grilled Chicken Sandwich",
+    "image": "https://thefamilydinnerproject.org/wp-content/uploads/2014/07/Easy-grilled-chicken-sandwich.jpg",
+    "price": 9.99,
+    "description": "Grilled chicken breast topped with lettuce, tomato, onion, and your choice of cheese on a toasted bun.",
+    "vegetarian": false
+  },
+  {
+    "id": 13,
+    "name": "Vegetable Pad Thai",
+    "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/10/0/FNK_Vegetarian-Tofu-Pad-Thai_H2_s4x3.jpg.rend.hgtvcom.616.462.suffix/1568385716096.jpeg",
+    "price": 8.99,
+    "description": "Stir-fried rice noodles with tofu, bean sprouts, and other vegetables in a sweet and savory sauce.",
+    "vegetarian": true
+  },
+  {
+    "id": 14,
+    "name": "Pepperoni Pizza",
+    "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg&q=60",
+    "price": 14.99,
+    "description": "A classic pizza with tomato sauce, mozzarella cheese, and spicy pepperoni.",
+    "vegetarian": false
+  },
+  {
+    "id": 15,
+    "name": "Caprese Salad",
+    "image": "https://www.cubesnjuliennes.com/wp-content/uploads/2022/08/Caprese-Salad-Recipe.jpg",
+    "price": 7.99,
+    "description": "Fresh mozzarella cheese, tomato slices, and basil leaves drizzled with balsamic vinegar.",
+    "vegetarian": true
+  },
+  {
+    "id": 16,
+    "name": "BBQ Pulled Pork Sandwich",
+    "image": "https://www.thespruceeats.com/thmb/4cEMi2DHe2ltFOg14JgpkMNxqik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pulled-pork-and-slaw-on-plate-18-56a8b9625f9b58b7d0f49e73.jpg",
+    "price": 10.99,
+    "description": "Slow-cooked pulled pork smothered in BBQ sauce and served on a toasted bun.",
+    "vegetarian": false
+  },
+  {
+    "id": 17,
+    "name": "Spinach and Feta Stuffed Chicken Breast",
+    "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2F1501p130-spinach-feta-stuffed-chicken-breasts.jpg%3Fitok%3DhElU_xvB",
+    "price": 13.99,
+    "description": "Tender chicken breast stuffed with spinach and feta cheese and baked to perfection.",
+    "vegetarian": false
+  },
+  {
+    "id": 18,
+    "name": "Vegetable Curry",
+    "image": "https://www.cookwithmanali.com/wp-content/uploads/2021/09/Vegetable-Chickpea-Coconut-Curry.jpg",
+    "price": 9.99,
+    "description": "A flavorful Indian dish featuring a mix of vegetables in a rich curry sauce.",
+    "vegetarian": true
+  },
+  {
+    "id": 19,
+    "name": "Beet and Goat Cheese Salad",
+    "image": "https://hungryhealthyhappy.com/wp-content/uploads/2019/07/beetroot-and-goats-cheese-salad-featured.jpg",
+    "price": 8.99,
+    "description": "Roasted beets, crumbled goat cheese, and candied pecans on a bed of mixed greens.",
+    "vegetarian": true
+  },
+  {
+    "id": 20,
+    "name": "Beef Tacos",
+    "image": "https://www.jessicagavin.com/wp-content/uploads/2019/05/ground-beef-tacos-4-1200.jpg",
+    "price": 11.99,
+    "description": "Seasoned ground beef, lettuce, tomato, and cheese in a crispy taco shell.",
+    "vegetarian": false
+  }
+]
