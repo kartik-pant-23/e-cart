@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import _size from "lodash/size";
 import _map from "lodash/map";
@@ -28,22 +28,31 @@ function Dashboard() {
     setVegOnlyFilter((prev) => !prev);
   };
 
-  const filterProducts = (product) => {
-    return (
-      _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
-      _includes(
-        _lowerCase(_get(product, "description")),
-        _lowerCase(searchQuery)
-      )
-    );
-  };
+  const filterProducts = useMemo(
+    () => (product) => {
+      return (
+        _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
+        _includes(
+          _lowerCase(_get(product, "description")),
+          _lowerCase(searchQuery)
+        )
+      );
+    },
+    [searchQuery]
+  );
 
   useEffect(() => {
     const itemsList = vegOnlyFilter
       ? _filter(products, "vegetarian")
       : products;
     setItems(_filter(itemsList, filterProducts));
-  }, [products, searchQuery, vegOnlyFilter]);
+  }, [products, filterProducts, vegOnlyFilter]);
+
+  const ItemsList = useMemo(() => {
+    if (_size(items) > 0)
+      return _map(items, (item) => <ItemCard key={item.id} item={item} />);
+    else return <EmptyList />;
+  }, [items]);
 
   return (
     <div>
@@ -69,10 +78,7 @@ function Dashboard() {
           Veg Only
         </div>
 
-        {_size(items) === 0 && <EmptyList />}
-
-        {_size(items) > 0 &&
-          _map(items, (item) => <ItemCard key={item.id} item={item} />)}
+        {ItemsList}
       </div>
     </div>
   );

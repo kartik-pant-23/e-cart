@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -13,47 +13,50 @@ import styles from "./ItemQuantityButton.module.css";
 function ItemQuantityButton({ itemId, quantity }) {
   const dispatch = useDispatch();
 
-  const handleIncreaseItemQuantity = () => {
+  const handleIncreaseItemQuantity = useCallback(() => {
     if (quantity === 0) {
       dispatch(addItem(itemId));
     }
     dispatch(increaseItemQuantity({ id: itemId }));
-  };
-  const handleDecreaseItemQuantity = () => {
+  }, [dispatch, quantity, itemId]);
+
+  const handleDecreaseItemQuantity = useCallback(() => {
     if (quantity === 1) {
       dispatch(removeItem(itemId));
     }
     dispatch(decreaseItemQuantity({ id: itemId }));
-  };
+  }, [dispatch, quantity, itemId]);
 
-  return (
-    <div className={styles.buttonContainer}>
-      {quantity === 0 ? (
+  const Button = useMemo(() => {
+    if (quantity === 0)
+      return (
         <button
           className={styles.addToCartButton}
           onClick={handleIncreaseItemQuantity}
         >
           Add To Cart
         </button>
-      ) : (
-        <div className={styles.quantityChangeButton}>
-          <div
-            className={styles.buttonDecrease}
-            onClick={handleDecreaseItemQuantity}
-          >
-            -
-          </div>
-          <div className={styles.buttonQuantity}>{quantity}</div>
-          <div
-            className={styles.buttonIncrease}
-            onClick={handleIncreaseItemQuantity}
-          >
-            +
-          </div>
+      );
+    return (
+      <div className={styles.quantityChangeButton}>
+        <div
+          className={styles.buttonDecrease}
+          onClick={handleDecreaseItemQuantity}
+        >
+          -
         </div>
-      )}
-    </div>
-  );
+        <div className={styles.buttonQuantity}>{quantity}</div>
+        <div
+          className={styles.buttonIncrease}
+          onClick={handleIncreaseItemQuantity}
+        >
+          +
+        </div>
+      </div>
+    );
+  }, [handleIncreaseItemQuantity, handleDecreaseItemQuantity, quantity]);
+
+  return <div className={styles.buttonContainer}>{Button}</div>;
 }
 
 ItemQuantityButton.propTypes = {
