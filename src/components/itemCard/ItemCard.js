@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
@@ -11,10 +11,10 @@ import styles from "./ItemCard.module.css";
 function ItemCard({ item, showRemoveButton = false }) {
   const dispatch = useDispatch();
 
-  const removeItem = () => {
+  const removeItem = useCallback(() => {
     dispatch(deleteItemFromCart(item.id));
     dispatch(decreaseItemQuantity({ id: item.id, quantity: item.quantity }));
-  };
+  }, [dispatch, item.id, item.quantity]);
 
   return (
     <div className={styles.container}>
@@ -40,7 +40,7 @@ function ItemCard({ item, showRemoveButton = false }) {
 
 ItemCard.propTypes = {
   item: PropTypes.object,
-  onChangeItemQuantity: PropTypes.func,
+  showRemoveButton: PropTypes.bool,
 };
 
 export default ItemCard;

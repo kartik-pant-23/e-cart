@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import _size from "lodash.size";
 import _map from "lodash.map";
@@ -28,8 +28,8 @@ function Dashboard() {
     setVegOnlyFilter((prev) => !prev);
   };
 
-  const filterProducts = useMemo(
-    () => (product) => {
+  const filterProducts = useCallback(
+    (product) => {
       return (
         _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
         _includes(

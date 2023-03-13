@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import _map from "lodash.map";
 import _find from "lodash.find";
@@ -8,6 +8,7 @@ import _round from "lodash.round";
 import ItemCard from "../../components/itemCard";
 
 import styles from "./CheckoutCart.module.css";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutCart() {
   const cartItemIds = useSelector((state) => state.cartItems);
@@ -51,6 +52,11 @@ function CheckoutCart() {
       )),
     [cartItems]
   );
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (cartItems.length === 0) navigate("/", { replace: true });
+  }, [cartItems, navigate]);
 
   return (
     <div className={styles.main}>
