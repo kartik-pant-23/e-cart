@@ -1,24 +1,32 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import _map from "lodash.map";
+import axios from "axios";
 
 import Dashboard from "./screens/dashboard";
 import CheckoutCart from "./screens/cart";
-
 import { addItems } from "./reducers/products";
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetch("/data/products.json")
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch(addItems(_map(data, (item) => ({ ...item, quantity: 0 }))))
-      )
-      .catch((err) => console.log(err));
+  const getProductsData = useCallback(async () => {
+    try {
+      const response = await axios.get("/data/products.json");
+      const productsList = _map(response.data, (product) => ({
+        ...product,
+        quantity: 0,
+      }));
+      dispatch(addItems(productsList));
+    } catch (e) {
+      console.error(e);
+    }
   }, [dispatch]);
+
+  useEffect(() => {
+    getProductsData();
+  }, [getProductsData]);
 
   return (
     <BrowserRouter>
