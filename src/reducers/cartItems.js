@@ -9,7 +9,7 @@ const slice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const item = _find(state, ["id", action.payload]);
-      if (item === undefined) {
+      if (!item) {
         state.push(action.payload);
       }
     },

@@ -14,14 +14,14 @@ const slice = createSlice({
     increaseItemQuantity: (state, action) => {
       const item = _find(state, ["id", _get(action, ["payload", "id"])]);
       const quantity = Math.abs(_get(action, ["payload", "quantity"], 1));
-      if (item !== undefined) {
+      if (item) {
         item.quantity += quantity;
       }
     },
     decreaseItemQuantity: (state, action) => {
       const item = _find(state, ["id", _get(action, ["payload", "id"])]);
       const quantity = Math.abs(_get(action, ["payload", "quantity"], 1));
-      if (item !== undefined) {
+      if (item) {
         item.quantity -= Math.min(item.quantity, quantity);
       }
     },

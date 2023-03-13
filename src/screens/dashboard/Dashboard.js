@@ -1,17 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import _size from "lodash.size";
 import _map from "lodash.map";
-import _get from "lodash.get";
 import _filter from "lodash.filter";
-import _includes from "lodash.includes";
-import _lowerCase from "lodash.lowercase";
 
 import Header from "./components/header";
 import ItemCard from "../../components/itemCard";
 import EmptyList from "./components/emptyList";
-
 import styles from "./Dashboard.module.css";
+import { getItemsMatchingSearchQuery } from "./Dashboard.helper";
 
 function Dashboard() {
   const [items, setItems] = useState([]);
@@ -28,28 +25,14 @@ function Dashboard() {
     setVegOnlyFilter((prev) => !prev);
   };
 
-  const filterProducts = useCallback(
-    (product) => {
-      return (
-        _includes(_lowerCase(_get(product, "name")), _lowerCase(searchQuery)) ||
-        _includes(
-          _lowerCase(_get(product, "description")),
-          _lowerCase(searchQuery)
-        )
-      );
-    },
-    [searchQuery]
-  );
-
   useEffect(() => {
-    const itemsList = vegOnlyFilter
-      ? _filter(products, "vegetarian")
-      : products;
-    setItems(_filter(itemsList, filterProducts));
-  }, [products, filterProducts, vegOnlyFilter]);
+    let itemsList = vegOnlyFilter ? _filter(products, "vegetarian") : products;
+    itemsList = getItemsMatchingSearchQuery(itemsList, searchQuery);
+    setItems(itemsList);
+  }, [products, vegOnlyFilter, searchQuery]);
 
   const ItemsList = useMemo(() => {
-    if (_size(items) > 0)
+    if (_size(items))
       return _map(items, (item) => <ItemCard key={item.id} item={item} />);
     else return <EmptyList />;
   }, [items]);
@@ -60,18 +43,16 @@ function Dashboard() {
 
       <div className={styles.content}>
         <h1 className={styles.pageTitle}>
-          Teketo&nbsp;
+          Teketo
           <span className={styles.brandTag}>
             Your Favourite Food, Your Favourite Place
           </span>
         </h1>
 
         <div className={styles.filterContainer}>
-          Filter:&nbsp;
+          Filter:
           <input
             type='checkbox'
-            name='vegOnly'
-            id='vegOnly'
             checked={vegOnlyFilter}
             onChange={handleVegOnlyFilterChange}
           />

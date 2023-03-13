@@ -48,10 +48,10 @@ function Header({ onSearchQueryChange }) {
       />
 
       <div className={styles.cartContainer}>
-        <div className={styles.cartButton} onClick={openCheckoutPage}>
+        <button className={styles.cartButton} onClick={openCheckoutPage}>
           <i className='fa-solid fa-cart-shopping fa-lg'></i> Cart
           <span className={styles.cartSize}>{_size(cartItems)}</span>
-        </div>
+        </button>
       </div>
     </div>
   );

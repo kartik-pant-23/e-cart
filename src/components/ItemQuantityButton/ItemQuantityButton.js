@@ -7,14 +7,13 @@ import {
   decreaseItemQuantity,
 } from "../../reducers/products";
 import { addItem, removeItem } from "../../reducers/cartItems";
-
 import styles from "./ItemQuantityButton.module.css";
 
 function ItemQuantityButton({ itemId, quantity }) {
   const dispatch = useDispatch();
 
   const handleIncreaseItemQuantity = useCallback(() => {
-    if (quantity === 0) {
+    if (!quantity) {
       dispatch(addItem(itemId));
     }
     dispatch(increaseItemQuantity({ id: itemId }));
@@ -27,42 +26,41 @@ function ItemQuantityButton({ itemId, quantity }) {
     dispatch(decreaseItemQuantity({ id: itemId }));
   }, [dispatch, quantity, itemId]);
 
-  const Button = useMemo(() => {
-    if (quantity === 0)
+  const ItemQuantitySelector = useMemo(() => {
+    if (quantity)
       return (
-        <button
-          className={styles.addToCartButton}
-          onClick={handleIncreaseItemQuantity}
-        >
-          Add To Cart
-        </button>
+        <div className={styles.quantityChangeButton}>
+          <button
+            className={styles.buttonDecrease}
+            onClick={handleDecreaseItemQuantity}
+          >
+            -
+          </button>
+          <div className={styles.buttonQuantity}>{quantity}</div>
+          <button
+            className={styles.buttonIncrease}
+            onClick={handleIncreaseItemQuantity}
+          >
+            +
+          </button>
+        </div>
       );
     return (
-      <div className={styles.quantityChangeButton}>
-        <div
-          className={styles.buttonDecrease}
-          onClick={handleDecreaseItemQuantity}
-        >
-          -
-        </div>
-        <div className={styles.buttonQuantity}>{quantity}</div>
-        <div
-          className={styles.buttonIncrease}
-          onClick={handleIncreaseItemQuantity}
-        >
-          +
-        </div>
-      </div>
+      <button
+        className={styles.addToCartButton}
+        onClick={handleIncreaseItemQuantity}
+      >
+        Add To Cart
+      </button>
     );
   }, [handleIncreaseItemQuantity, handleDecreaseItemQuantity, quantity]);
 
-  return <div className={styles.buttonContainer}>{Button}</div>;
+  return <div className={styles.buttonContainer}>{ItemQuantitySelector}</div>;
 }
 
 ItemQuantityButton.propTypes = {
-  itemId: PropTypes.number,
-  quantity: PropTypes.number,
-  onChangeItemQuantity: PropTypes.func,
+  itemId: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default ItemQuantityButton;

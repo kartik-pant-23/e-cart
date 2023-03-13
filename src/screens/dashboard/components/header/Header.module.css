@@ -35,12 +35,14 @@
 }
 
 .cartButton {
+  background-color: transparent;
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   padding: 0.5rem;
   display: inline-block;
   width: 8rem;
   cursor: pointer;
+  border: none;
 }
 .cartButton:hover {
   background-color: rgba(255, 255, 255, 0.1);

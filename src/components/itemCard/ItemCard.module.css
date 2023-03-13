@@ -40,9 +40,10 @@
   top: 0.5rem;
   right: 0;
   background-color: rgb(205, 205, 205);
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  border: none;
 }
 
 @media (max-width: 600px) {
